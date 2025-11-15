@@ -65,6 +65,8 @@ class EntityListenerTest {
 		defender = PT.createPlayer("Defender");
 		combatAttacker = ph.createPlayer(attacker, true);
 		combatDefender = ph.createPlayer(defender, true);
+		combatAttacker.waitForPlayerToLoad();
+		combatDefender.waitForPlayerToLoad();
 	}
 
 	private void createAttack(final boolean cancelled, final Player attackerPlayer) {
