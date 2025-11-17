@@ -63,7 +63,7 @@ public class PlayerListener implements Listener {
 				player.message(Lang.ITEM_COOLDOWN.msgTimeUntil(player.getItemCooldown(type)));
 				return;
 			}
-			player.setItemCooldown(type, Conf.ITEM_COOLDOWNS.asMap().get(type));
+			ScheduleUtils.runPlatformTask(() -> player.setItemCooldown(type, Conf.ITEM_COOLDOWNS.asMap().get(type)), player);
 		}
 	}
 
@@ -124,7 +124,7 @@ public class PlayerListener implements Listener {
 				}
 				e.setCancelled(true);
 			} else if (!type.isEdible()) {
-				ScheduleUtils.runPlatformTask(() -> pvplayer.setItemCooldown(type, Conf.ITEM_COOLDOWNS.asMap().get(type)));
+				ScheduleUtils.runPlatformTask(() -> pvplayer.setItemCooldown(type, Conf.ITEM_COOLDOWNS.asMap().get(type)), player);
 			}
 		}
 	}
