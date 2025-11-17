@@ -15,7 +15,7 @@ dependencies {
     compileOnly('com.github.EssentialsX.Essentials:EssentialsX:2.20.0') {
         exclude group: '*', module: '*'
     }
-    compileOnly 'me.clip:placeholderapi:2.11.6'
+    compileOnly 'me.clip:placeholderapi:2.11.7'
     compileOnly 'com.github.MilkBowl:VaultAPI:1.7.1'
     compileOnly('com.sk89q.worldguard:worldguard-bukkit:7.1.0-SNAPSHOT') {
         exclude group: 'org.antlr', module: 'antlr4'
