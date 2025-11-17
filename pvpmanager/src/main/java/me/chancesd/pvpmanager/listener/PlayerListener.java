@@ -63,7 +63,7 @@ public class PlayerListener implements Listener {
 				player.message(Lang.ITEM_COOLDOWN.msgTimeUntil(player.getItemCooldown(type)));
 				return;
 			}
-			ScheduleUtils.runPlatformTask(() -> player.setItemCooldown(type, Conf.ITEM_COOLDOWNS.asMap().get(type)), player);
+			player.setItemCooldown(type, Conf.ITEM_COOLDOWNS.asMap().get(type));
 		}
 	}
 
