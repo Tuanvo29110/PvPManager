@@ -66,24 +66,22 @@ public abstract class BasePlayer {
 	}
 
 	public final void message(final String message) {
-        if (isOnline() && message != null && !message.isEmpty()) {
-            getPlayer().sendMessage(message);
-        }
-    }
+		if (isOnline() && !message.isEmpty()) {
+			getPlayer().sendMessage(message);
+		}
+	}
 
-    public final void message(final Lang message, final String... args) {
-        if (isOnline()) {
-            String msg = message.msg(args);
-            if (msg != null && !msg.isEmpty()) getPlayer().sendMessage(msg);
-        }
-    }
+	public final void message(final Lang message, final String... args) {
+		if (isOnline()) {
+			getPlayer().sendMessage(message.msg(args));
+		}
+	}
 
-    public final void message(final Lang message) {
-        if (isOnline()) {
-            String msg = message.msg();
-            if (msg != null && !msg.isEmpty()) getPlayer().sendMessage(msg);
-        }
-    }
+	public final void message(final Lang message) {
+		if (isOnline()) {
+			getPlayer().sendMessage(message.msg());
+		}
+	}
 
 	/**
 	 * Sends an action bar message with the specified duration
