@@ -86,7 +86,7 @@ public abstract class BasePlayer {
 		if (isOnline()) {
 		    String msg = message.msg();
 		    if (msg != null && !msg.isEmpty()) {
-		        getPlayer().sendMessage();
+		        getPlayer().sendMessage(msg);
 		    }
 		}
 	}
