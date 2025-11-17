@@ -67,7 +67,7 @@ public abstract class BasePlayer {
 
 	public final void message(final String message) {
 		if (isOnline()) {
-		    if (message != null && !message.isEmpty()) {
+		    if (message != null && !message.isEmpty() && !message.isBlank()) {
 		        getPlayer().sendMessage(message);
 		    }
 		}
@@ -76,7 +76,7 @@ public abstract class BasePlayer {
 	public final void message(final Lang message, final String... args) {
 		if (isOnline()) {
 		    String msg = message.msg(args);
-		    if (msg != null && !msg.isEmpty()) {
+		    if (msg != null && !msg.isEmpty() && !msg.isBlank()) {
 		        getPlayer().sendMessage(msg);
 		    }
 		}
@@ -85,7 +85,7 @@ public abstract class BasePlayer {
 	public final void message(final Lang message) {
 		if (isOnline()) {
 		    String msg = message.msg();
-		    if (msg != null && !msg.isEmpty()) {
+		    if (msg != null && !msg.isEmpty() && !msg.isBlank()) {
 		        getPlayer().sendMessage(msg);
 		    }
 		}
