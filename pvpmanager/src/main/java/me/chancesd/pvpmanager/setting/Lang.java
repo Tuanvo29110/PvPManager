@@ -266,8 +266,9 @@ public enum Lang implements TimeLangProvider {
 
 	@NotNull
 	public static String getString(final String key) {
-		final String message = new String(LANG_PROPERTIES.getProperty(key).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-		return ChatUtils.colorize(message).replace(Replacement.PREFIX.getPlaceholder(), PREFIX.msg());
+		final String raw = LANG_PROPERTIES.getProperty(key, "").trim();
+		if (raw.isEmpty()) return null;
+		return ChatUtils.colorize(raw).replace(Replacement.PREFIX.getPlaceholder(), PREFIX.msg());
 	}
 
 	private static void checkChanges() {
