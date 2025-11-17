@@ -160,7 +160,6 @@ public enum Lang implements TimeLangProvider {
 
 	@NotNull
 	public String msg(final String... arguments) {
-	    if (message == null || message.isEmpty()) return "";
 		String finalMessage = message;
 		for (int i = 0; i < replacements.length; i++) {
 			final String placeholder = replacements[i].getPlaceholder();
@@ -171,7 +170,6 @@ public enum Lang implements TimeLangProvider {
 
 	@NotNull
 	public String msg(final Object... arguments) {
-	    if (message == null || message.isEmpty()) return "";
 		String finalMessage = message;
 		for (int i = 0; i < replacements.length && i < arguments.length; i++) {
 			final String placeholder = replacements[i].getPlaceholder();
