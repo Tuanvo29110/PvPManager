@@ -40,7 +40,8 @@ public class RegionCheckTask extends BukkitRunnable implements Listener {
 					continue;
 				lastLocation.setPitch(playerLocation.getPitch());
 				lastLocation.setYaw(playerLocation.getYaw());
-				ScheduleUtils.teleport(player, lastLocation, "Failed to teleport player out of non-PvP region");
+				safeTeleportWithVehicle(player, lastLocation);
+				//ScheduleUtils.teleport(player, lastLocation, "Failed to teleport player out of non-PvP region");
 				pvPlayer.message(Lang.PUSHBACK_WARNING);
 			} else {
 				lastLocations.put(pvPlayer, playerLocation);
@@ -57,5 +58,25 @@ public class RegionCheckTask extends BukkitRunnable implements Listener {
 	public void onPlayerTag(final PlayerUntagEvent event) {
 		lastLocations.remove(event.getCombatPlayer());
 	}
+	
+	private void safeTeleportWithVehicle(Player player, Location loc) {
+        var vehicle = player.getVehicle();
+
+        if (vehicle != null) {
+            vehicle.eject();
+
+            // Teleport vehicle
+            ScheduleUtils.teleport(vehicle, loc, "Failed to teleport vehicle out of non-PvP region");
+
+            // Teleport player
+            ScheduleUtils.teleport(player, loc, "Failed to teleport player out of non-PvP region");
+
+            // Add player back
+            vehicle.addPassenger(player);
+        } else {
+            // No vehicle, normal teleport
+            ScheduleUtils.teleport(player, loc, "Failed to teleport player out of non-PvP region");
+        }
+    }
 
 }
