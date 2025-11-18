@@ -65,9 +65,6 @@ public class RegionCheckTask extends BukkitRunnable implements Listener {
         if (vehicle != null) {
             // Teleport vehicle
             ScheduleUtils.teleport(vehicle, loc, "Failed to teleport vehicle out of non-PvP region");
-
-            // Teleport player
-            ScheduleUtils.teleport(player, loc, "Failed to teleport player out of non-PvP region");
         } else {
             // No vehicle, normal teleport
             ScheduleUtils.teleport(player, loc, "Failed to teleport player out of non-PvP region");
